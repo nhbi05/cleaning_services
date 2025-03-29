@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     "cleaning_services"
 ]
 
@@ -46,7 +46,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -128,11 +128,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# Email settings
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.youremailprovider.com'  # Replace with your email provider's SMTP server
-EMAIL_PORT = 587  # Common ports: 587 (TLS) or 465 (SSL)
-EMAIL_USE_TLS = True  # Set to False if using SSL with port 465
-EMAIL_HOST_USER = 'your-actual-email@yourdomain.com'  # The email address for your website
-EMAIL_HOST_PASSWORD = 'your-actual-password'  # Password for that email account
-DEFAULT_FROM_EMAIL = 'your-actual-email@yourdomain.com'  # Default sender address
