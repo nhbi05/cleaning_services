@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Cleaning - CleanFuture</title>
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">Clean<span>Future</span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'booking' %}" class="active">Book Now</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1 class="page-title">Book Your <span style="color: var(--primary);">Cleaning</span></h1>
+        <p class="page-subtitle">Schedule your eco-friendly cleaning service quickly and easily. Customize your cleaning experience with just a few clicks.</p>
+    </header>
+    
+    <!-- Booking Form -->
+    <section class="booking-section">
+        <div class="booking-container reveal">
+            <form action="{% url 'booking' %}" method="post" class="booking-form">
+                {% csrf_token %}
+                
+                <div class="form-section">
+                    <h2 class="section-title">Service Details</h2>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.service_type.id_for_label }}">Service Type</label>
+                        {{ form.service_type }}
+                        {% if form.service_type.errors %}
+                            <div class="error">{{ form.service_type.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.property_size.id_for_label }}">Property Size (approx. sq ft)</label>
+                        {{ form.property_size }}
+                        {% if form.property_size.errors %}
+                            <div class="error">{{ form.property_size.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.preferred_date.id_for_label }}">Preferred Date</label>
+                        {{ form.preferred_date }}
+                        {% if form.preferred_date.errors %}
+                            <div class="error">{{ form.preferred_date.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.preferred_time.id_for_label }}">Preferred Time</label>
+                        {{ form.preferred_time }}
+                        {% if form.preferred_time.errors %}
+                            <div class="error">{{ form.preferred_time.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Contact Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.full_name.id_for_label }}">Full Name</label>
+                        {{ form.full_name }}
+                        {% if form.full_name.errors %}
+                            <div class="error">{{ form.full_name.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.email.id_for_label }}">Email Address</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="error">{{ form.email.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.phone.id_for_label }}">Phone Number</label>
+                        {{ form.phone }}
+                        {% if form.phone.errors %}
+                            <div class="error">{{ form.phone.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.address.id_for_label }}">Service Address</label>
+                        {{ form.address }}
+                        {% if form.address.errors %}
+                            <div class="error">{{ form.address.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Additional Details</h2>
+                    
+                    <div class="form-group">
+                        <label for="{{ form.special_instructions.id_for_label }}">Special Instructions</label>
+                        {{ form.special_instructions }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Eco-Friendly Preferences</label>
+                        <div class="checkbox-group">
+                            {{ form.eco_preferences }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="cta-button">Schedule Cleaning</button>
+                    <button type="reset" class="secondary-button">Reset Form</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2 class="section-title">Questions About Your Booking?</h2>
+            <p class="cta-text">Our friendly customer support team is ready to help you customize your cleaning experience. Don't hesitate to reach out if you need assistance.</p>
+            <div class="cta-buttons">
+                <a href="{% url 'contact' %}" class="cta-button">Contact Support</a>
+                <a href="tel:+1-888-CLEANFUTURE" class="secondary-button">Call Us</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer (same as services page) -->
+    <footer>
+        <!-- Footer content from services page -->
+        <div class="footer-top">
+            <div class="footer-column">
+                <h4>CleanFuture</h4>
+                <p>Revolutionizing the cleaning industry with eco-friendly solutions and cutting-edge technology to provide exceptional service quality.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">ig</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'booking' %}">Book Now</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'services' %}#residential">Residential Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#commercial">Commercial Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#deep">Deep Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#eco">Eco-Friendly Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#specialized">Specialized Services</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; {% now "Y" %} CleanFuture. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
