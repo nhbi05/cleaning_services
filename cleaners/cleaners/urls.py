@@ -21,7 +21,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("cleaners/cleaning_services.urls")),
+    path('', include("cleaners.cleaning_services.urls")),
+
    
 ]
 
