@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - CleanFuture</title>
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">Clean<span>Future</span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'contact' %}" style="color: var(--primary);">Contact</a>
+            <a href="{% url 'booking' %}">Book Now</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1 class="page-title">Contact <span style="color: var(--primary);">Us</span></h1>
+        <p class="page-subtitle">We're here to answer your questions and provide expert cleaning solutions tailored to your needs. Reach out today and experience the CleanFuture difference.</p>
+    </header>
+    
+    <!-- Contact Information -->
+    <section class="service-intro">
+        <div class="intro-content reveal">
+            <h2 class="section-title">We're Here to Help</h2>
+            <p class="intro-text">Have questions about our services or want to request a quote? Our friendly team is ready to assist you. Choose the method that works best for you to get in touch with us.</p>
+        </div>
+    </section>
+    
+    <!-- Contact Methods -->
+    <section class="service-section">
+        <div class="service-content reveal">
+            <h2 class="section-title">Get in Touch</h2>
+            
+            <div class="specialized-grid" style="margin-top: 2rem;">
+                <div class="specialized-card">
+                    <div class="specialized-icon">📞</div>
+                    <h3 class="specialized-title">Call Us</h3>
+                    <p class="specialized-text">Speak directly with our customer service team for immediate assistance.</p>
+                    <p style="font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-top: 1rem;">0880080000</p>
+                    <p style="color: var(--secondary);">Available Mon-Fri: 8am-7pm, Sat: 9am-4pm</p>
+                </div>
+                
+                <div class="specialized-card">
+                    <div class="specialized-icon">✉️</div>
+                    <h3 class="specialized-title">Email Us</h3>
+                    <p class="specialized-text">Send us your questions or inquiry and we'll respond within 24 hours.</p>
+                    <p style="font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-top: 1rem;">cleanfuture0@gmail.com</p>
+                    <p style="color: var(--secondary);">We aim to respond within 24 hours</p>
+                </div>
+                
+                <div class="specialized-card">
+                    <div class="specialized-icon">📱</div>
+                    <h3 class="specialized-title">Text Us</h3>
+                    <p class="specialized-text">Text for quick responses and updates on your cleaning service.</p>
+                    <p style="font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-top: 1rem;">256000000777</p>
+                    <p style="color: var(--secondary);">Available Mon-Sat: 9am-6pm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Form -->
+    <section class="service-section alt-bg">
+        <div class="service-content reveal">
+            <h2 class="section-title">Send Us a Message</h2>
+            <p class="service-text">Use the form below to send us your inquiry, request a quote, or schedule a service. We'll get back to you as soon as possible.</p>
+            
+            <form id="contactForm" class="contact-form" style="margin-top: 2rem;" method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 200px;">
+                        <label for="first_name">First Name *</label>
+                        <input type="text" id="first_name" name="first_name" required placeholder="Your first name">
+                    </div>
+                    <div style="flex: 1; min-width: 200px;">
+                        <label for="last_name">Last Name *</label>
+                        <input type="text" id="last_name" name="last_name" required placeholder="Your last name">
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 200px;">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div style="flex: 1; min-width: 200px;">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="256 700000007">
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="" disabled selected>Select a subject</option>
+                        <option value="Request a Quote">Request a Quote</option>
+                        <option value="Schedule a Service">Schedule a Service</option>
+                        <option value="General Question">General Question</option>
+                        <option value="Feedback">Feedback</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Please tell us how we can help you..."></textarea>
+                </div>
+                
+                <!-- Display form errors if any -->
+                {% if form.errors %}
+                    <div class="error-message" style="color: red; margin-bottom: 1rem;">
+                        Please correct the errors below.
+                    </div>
+                {% endif %}
+                
+                <!-- Display success messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="message {% if message.tags %}{{ message.tags }}{% endif %}" 
+                             style="{% if message.tags == 'success' %}color: green;{% else %}color: red;{% endif %} margin-bottom: 1rem;">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+        
+        <div class="service-image reveal">
+            <div style="position: relative; overflow: hidden; border-radius: 15px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
+                <img src="{% static 'images/contact-us2.jpg' %}" alt="Contact Us" style="width: 100%; vertical-align: middle;">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; background: var(--dark-glass); color: var(--white);">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.6rem;">Visit Our Office</h3>
+                    <p style="line-height: 1.6; margin-bottom: 0.8rem; font-size: 1.1rem;">123 Eco Street, Green City</p>
+                    <p style="line-height: 1.6; font-size: 1.1rem;">Open Monday-Friday: 9am-5pm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Map Section 
+    <section class="service-section">
+        <div class="service-content reveal" style="width: 100%; text-align: center;">
+            <h2 class="section-title">Find Us</h2>
+            <p class="service-text" style="max-width: 800px; margin: 0 auto 2rem;">Visit our office for a face-to-face consultation. We're conveniently located in the heart of the city.</p>
+            <div class="map-container">
+                 Placeholder for map
+                <img src="{% static 'images/map.jpg' %}" alt="Map" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+    </section>-->
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content reveal">
+            <h2 class="section-title">Need Immediate Assistance?</h2>
+            <p class="cta-text">Our customer service team is available to help you with any questions or to schedule your cleaning service right away.</p>
+            <div class="cta-buttons">
+                <a href="tel:18002326436" class="cta-button">Call Now: 1-800-CLEAN-ECO</a>
+                <a href="{% url 'booking' %}" class="cta-button" style="background: transparent; color: var(--white); border: 2px solid var(--white);">Book Online</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-column">
+                <h4>CleanFuture</h4>
+                <p>Revolutionizing the cleaning industry with eco-friendly solutions and cutting-edge technology to provide exceptional service quality.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">ig</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'booking' %}">Book Now</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'services' %}#residential">Residential Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#commercial">Commercial Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#deep">Deep Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#eco">Eco-Friendly Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#specialized">Specialized Services</a></li>
+                </ul>
+            </div>
+            
+           
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; {% now "Y" %} CleanFuture. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
