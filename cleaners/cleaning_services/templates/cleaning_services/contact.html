@@ -53,7 +53,7 @@
                     <div class="specialized-icon">✉️</div>
                     <h3 class="specialized-title">Email Us</h3>
                     <p class="specialized-text">Send us your questions or inquiry and we'll respond within 24 hours.</p>
-                    <p style="font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-top: 1rem;">info@cleanfuture.com</p>
+                    <p style="font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-top: 1rem;">cleanfuture0@gmail.com</p>
                     <p style="color: var(--secondary);">We aim to respond within 24 hours</p>
                 </div>
                 
@@ -61,7 +61,7 @@
                     <div class="specialized-icon">📱</div>
                     <h3 class="specialized-title">Text Us</h3>
                     <p class="specialized-text">Text for quick responses and updates on your cleaning service.</p>
-                    <p style="font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-top: 1rem;">256777770000</p>
+                    <p style="font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-top: 1rem;">256000000777</p>
                     <p style="color: var(--secondary);">Available Mon-Sat: 9am-6pm</p>
                 </div>
             </div>
@@ -78,12 +78,12 @@
                 {% csrf_token %}
                 <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 200px;">
-                        <label for="firstName">First Name *</label>
-                        <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
+                        <label for="first_name">First Name *</label>
+                        <input type="text" id="first_name" name="first_name" required placeholder="Your first name">
                     </div>
                     <div style="flex: 1; min-width: 200px;">
-                        <label for="lastName">Last Name *</label>
-                        <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
+                        <label for="last_name">Last Name *</label>
+                        <input type="text" id="last_name" name="last_name" required placeholder="Your last name">
                     </div>
                 </div>
                 
@@ -102,11 +102,11 @@
                     <label for="subject">Subject *</label>
                     <select id="subject" name="subject" required>
                         <option value="" disabled selected>Select a subject</option>
-                        <option value="quote">Request a Quote</option>
-                        <option value="service">Schedule a Service</option>
-                        <option value="question">General Question</option>
-                        <option value="feedback">Feedback</option>
-                        <option value="other">Other</option>
+                        <option value="Request a Quote">Request a Quote</option>
+                        <option value="Schedule a Service">Schedule a Service</option>
+                        <option value="General Question">General Question</option>
+                        <option value="Feedback">Feedback</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
                 
@@ -115,12 +115,22 @@
                     <textarea id="message" name="message" rows="6" required placeholder="Please tell us how we can help you..."></textarea>
                 </div>
                 
-                <div style="margin-bottom: 2rem;">
-                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                        <input type="checkbox" name="newsletter" id="newsletter" style="width: 18px; height: 18px;">
-                        <span style="color: var(--secondary);">Subscribe to our newsletter for cleaning tips and exclusive offers</span>
-                    </label>
-                </div>
+                <!-- Display form errors if any -->
+                {% if form.errors %}
+                    <div class="error-message" style="color: red; margin-bottom: 1rem;">
+                        Please correct the errors below.
+                    </div>
+                {% endif %}
+                
+                <!-- Display success messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="message {% if message.tags %}{{ message.tags }}{% endif %}" 
+                             style="{% if message.tags == 'success' %}color: green;{% else %}color: red;{% endif %} margin-bottom: 1rem;">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 
                 <button type="submit" class="cta-button">Send Message</button>
             </form>

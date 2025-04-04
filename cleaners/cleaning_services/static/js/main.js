@@ -77,29 +77,4 @@ document.getElementById('newsletterForm').addEventListener('submit', function(e)
         alert('An error occurred. Please try again.');
     });
 });
-document.addEventListener('DOMContentLoaded', function() {
-    const serviceSelect = document.getElementById('id_service');
-    const serviceOptionSelect = document.getElementById('id_service_option');
 
-    serviceSelect.addEventListener('change', function() {
-        const serviceId = this.value;
-        
-        fetch(`/get-service-options/${serviceId}/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            serviceOptionSelect.innerHTML = '<option value="">Select a Service Option</option>';
-            data.options.forEach(option => {
-                const optionElement = document.createElement('option');
-                optionElement.value = option.id;
-                optionElement.textContent = `${option.name} - $${option.price} (${option.duration} hrs)`;
-                serviceOptionSelect.appendChild(optionElement);
-            });
-        });
-    });
-});

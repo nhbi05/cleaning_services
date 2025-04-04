@@ -11,9 +11,9 @@ urlpatterns = [
     
     # Booking-related paths
     path('booking/', views.booking_view, name='booking'),
-    path('my-bookings/', views.my_bookings, name='my_bookings'),
-    path('cancel-booking/<int:booking_id>/', views.cancel_booking, name='cancel_booking'),
+    #path('my-bookings/', views.my_bookings, name='my_bookings'),
+    #path('cancel-booking/<int:booking_id>/', views.cancel_booking, name='cancel_booking'),
     
     # Service options path with service_id parameter
-    path('get-service-options/<int:service_id>/', views.get_service_options, name='get_service_options'),
+     #path('get-service-options/', views.get_service_options, name='get_service_options'),
 ]
