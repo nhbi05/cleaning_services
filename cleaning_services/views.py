@@ -70,9 +70,8 @@ from .forms import BookingForm
 
 def booking_view(request):
     """View for the booking page"""
-    form = BookingForm(request.POST or None)  # Initialize form with POST data if available
-
     if request.method == 'POST':
+        form = BookingForm(request.POST)
         if form.is_valid():
             try:
                 booking = form.save()
@@ -90,27 +89,20 @@ def booking_view(request):
                             f"Address: {booking.address}, {booking.city}\n"
                             f"Special Instructions: {booking.special_instructions}",
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=['adcleanfuture1@gmail.com'],  # Change to your admin email
+                    recipient_list=['adcleanfuture1@gmail.com'],
                     fail_silently=False,
                 )
 
-                # Add success message
                 messages.success(request, "Thank you! Your booking request has been submitted successfully. We'll contact you shortly to confirm your appointment.")
-
-                # Instead of redirecting, reload the same page with a new blank form
-                form = BookingForm()  # Reset the form
-
+                return redirect('booking')  # Clear form after successful submission
             except Exception as e:
-                # Add error message
-                messages.error(request, "There was a problem processing your booking. Please try again later.")
+                messages.error(request, f"There was a problem processing your booking: {e}")
                 print(f"Error in booking form: {e}")
-        else:
-            # Form validation errors
-            messages.error(request, "Please correct the errors in the form and try again.")
+        # Don't reset the form if invalid - let it show errors
+    else:
+        form = BookingForm()  # Only create new form on GET requests
 
     return render(request, 'cleaning_services/booking.html', {'form': form})
-
-
 
 
 
