@@ -72,6 +72,7 @@ def booking_view(request):
     """View for the booking page"""
     if request.method == 'POST':
         form = BookingForm(request.POST)
+
         if form.is_valid():
             try:
                 booking = form.save()
@@ -89,7 +90,7 @@ def booking_view(request):
                             f"Address: {booking.address}, {booking.city}\n"
                             f"Special Instructions: {booking.special_instructions}",
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=['adcleanfuture1@gmail.com'],
+                    recipient_list=['nhousnahishaq@gmail.com'],
                     fail_silently=False,
                 )
 
