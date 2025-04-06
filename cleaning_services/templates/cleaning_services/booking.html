@@ -42,7 +42,8 @@
         </div>
         {% endif %}
         
-        <form action="{% url 'booking' %}" method="post" class="booking-form">
+        <form id="bookingForm" action="{% url 'booking' %}" method="post" class="booking-form">
+
             {% csrf_token %}
             
             {% if form.errors %}
@@ -188,6 +189,52 @@
     </footer>
     
     <!-- JavaScript -->
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/main.js' %}">
+       
+document.getElementById('bookingForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent page reload
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
+            },
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            form.reset(); // Clear form
+            showPopup("Booking submitted successfully!");
+        } else {
+            showPopup("There was an error submitting your booking.");
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showPopup("Something went wrong. Please try again later.");
+    }
+});
+
+function showPopup(message) {
+    const popup = document.getElementById('popupMessage');
+    const text = document.getElementById('popupText');
+    text.innerText = message;
+    popup.classList.remove('hidden');
+
+    setTimeout(() => {
+        popup.classList.add('hidden');
+    }, 4000);
+}
+   </script>
+   <div id="popupMessage" class="popup-message hidden">
+    <p id="popupText"></p>
+</div>
+
 </body>
 </html>

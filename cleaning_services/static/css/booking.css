@@ -502,3 +502,19 @@
         flex-direction: column;
     }
 }
+.popup-message {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #4caf50;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+.popup-message.hidden {
+    display: none;
+}
