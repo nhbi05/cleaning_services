@@ -35,7 +35,7 @@ DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'CleanFuture <cleanfut
 SECRET_KEY = 'django-insecure-#4er%ia-$4g8_ia+i6vqio200u^qmxj&+gg!v)ouvsf5=rjyyx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
