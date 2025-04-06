@@ -1,4 +1,3 @@
-
 /* Global Styles */
 :root {
     --primary: #00b4d8;
@@ -8,35 +7,35 @@
     --accent: #7209b7;
     --white: #ffffff;
     --dark-glass: rgba(3, 4, 94, 0.7);
-    }
-    
-    * {
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    body {
+}
+
+body {
     background-color: var(--white);
     color: var(--dark);
     overflow-x: hidden;
-    }
-    
-    /* Scroll Animation */
-    .reveal {
+}
+
+/* Scroll Animation */
+.reveal {
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.8s ease;
-    }
-    
-    .reveal.active {
+}
+
+.reveal.active {
     opacity: 1;
     transform: translateY(0);
-    }
-    
-    /* Navbar */
-    nav {
+}
+
+/* Navbar */
+nav {
     position: fixed;
     top: 0;
     width: 100%;
@@ -48,37 +47,37 @@
     backdrop-filter: blur(10px);
     z-index: 1000;
     transition: all 0.3s ease;
-    }
-    
-    nav.scrolled {
+}
+
+nav.scrolled {
     padding: 1rem 5%;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .logo {
+}
+
+.logo {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--dark);
-    }
-    
-    .logo span {
+}
+
+.logo span {
     color: var(--primary);
-    }
-    
-    .nav-links {
+}
+
+.nav-links {
     display: flex;
     gap: 2rem;
-    }
-    
-    .nav-links a {
+}
+
+.nav-links a {
     text-decoration: none;
     color: var(--dark);
     font-weight: 500;
     position: relative;
     transition: all 0.3s ease;
-    }
-    
-    .nav-links a::after {
+}
+
+.nav-links a::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -87,22 +86,22 @@
     height: 2px;
     background-color: var(--primary);
     transition: all 0.3s ease;
-    }
-    
-    .nav-links a:hover {
+}
+
+.nav-links a:hover {
     color: var(--primary);
-    }
-    
-    .nav-links a:hover::after {
+}
+
+.nav-links a:hover::after {
     width: 100%;
-    }
-    
-    .menu-toggle {
+}
+
+.menu-toggle {
     display: none;
     cursor: pointer;
     font-size: 1.5rem;
-    }
-    
+}
+
     /* Hero Section */
     .hero {
     height: 100vh;
@@ -330,7 +329,9 @@
         width: 100%;
         text-align: center;
     }
-    
+    .menu-toggle {
+        display: block;
+    }
     .hero h1 {
         font-size: 2.8rem;
     }
@@ -501,4 +502,20 @@
     .booking-form .form-actions {
         flex-direction: column;
     }
+}
+.popup-message {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #4caf50;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+.popup-message.hidden {
+    display: none;
 }
