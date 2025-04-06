@@ -90,7 +90,7 @@ def booking_view(request):
                             f"Address: {booking.address}, {booking.city}\n"
                             f"Special Instructions: {booking.special_instructions}",
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=['nhousnahishaq@gmail.com'],
+                    recipient_list=['stephanyrhoydne@gmail.com'],
                     fail_silently=False,
                 )
 
