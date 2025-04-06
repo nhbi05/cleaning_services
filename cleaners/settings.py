@@ -140,7 +140,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+"""if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'"""
 
 CSRF_TRUSTED_ORIGINS = ['https://cleaningservices-production-b82f.up.railway.app']
