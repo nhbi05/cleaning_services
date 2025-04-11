@@ -18,6 +18,10 @@ def home(request):
     return render(request, 'cleaning_services/index.html')
 
 
+
+def gallery_view(request):
+    """View function for the gallery page"""
+    return render(request, 'cleaning_services/gallery.html')
     
 def about(request):
     """View for the about page"""

@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - CleanFuture</title>
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">Clean<span>Future</span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'booking' %}">Book Now</a>
+            <a href="{% url 'gallery' %}" style="color: var(--primary);">Gallery</a>
+            
+        </div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1 class="page-title">Our <span style="color: var(--primary);">Gallery</span></h1>
+        <p class="page-subtitle">See the transformation our cleaning services bring to homes and businesses. Our gallery showcases our commitment to excellence and attention to detail.</p>
+    </header>
+    
+    <!-- Gallery Introduction -->
+    <section class="service-intro">
+        <div class="intro-content reveal">
+            <h2 class="section-title">Our Work in Action</h2>
+            <p class="intro-text">Browse through our gallery of before-and-after transformations, spotless spaces, and eco-friendly cleaning solutions. Each image represents our dedication to providing exceptional cleaning services.</p>
+        </div>
+    </section>
+    
+    <!-- Gallery Categories -->
+    <section class="gallery-categories">
+        <div class="category-filter reveal">
+            <button class="filter-button active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="residential">Residential</button>
+            <button class="filter-button" data-filter="commercial">Commercial</button>
+            <button class="filter-button" data-filter="deep-cleaning">Deep Cleaning</button>
+            <button class="filter-button" data-filter="before-after">Before & After</button>
+        </div>
+    </section>
+    
+    <!-- Gallery Grid -->
+    <section class="gallery-grid">
+        <!-- Residential Cleaning Images -->
+        <div class="gallery-item reveal residential">
+            <div class="gallery-image">
+                <img src="{% static 'images/living_room.jpg' %}" alt="Clean living room">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3>Modern Living Room</h3>
+                        <p>Complete cleaning service including dusting, vacuuming, and surface sanitization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gallery-item reveal residential">
+            <div class="gallery-image">
+                <img src="{% static 'images/kitchen.jpg' %}" alt="Clean kitchen">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3>Spotless Kitchen</h3>
+                        <p>Deep kitchen cleaning with eco-friendly products for a healthy cooking environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gallery-item reveal residential">
+            <div class="gallery-image">
+                <img src="{% static 'images/bathroom.jpg' %}" alt="Clean bathroom">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3>Pristine Bathroom</h3>
+                        <p>Thorough bathroom sanitization and cleaning for a sparkling finish.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Commercial Cleaning Images -->
+        <div class="gallery-item reveal commercial">
+            <div class="gallery-image">
+                <img src="{% static 'images/office.jpg' %}" alt="Clean office space">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3>Corporate Office</h3>
+                        <p>Regular maintenance cleaning for a productive work environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gallery-item reveal commercial">
+            <div class="gallery-image">
+                <img src="{% static 'images/retail.jpg' %}" alt="Clean retail store">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3>Retail Space</h3>
+                        <p>Comprehensive cleaning solutions for high-traffic commercial areas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Deep Cleaning Images -->
+        <div class="gallery-item reveal deep-cleaning">
+            <div class="gallery-image">
+                <img src="{% static 'images/carpet.jpg' %}" alt="Deep cleaned carpet">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3>Carpet Restoration</h3>
+                        <p>Professional deep cleaning for fresh, sanitized carpets.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gallery-item reveal deep-cleaning">
+            <div class="gallery-image">
+                <img src="{% static 'images/urniture1.jpg' %}" alt="Deep cleaned upholstery">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3>Upholstery Revival</h3>
+                        <p>Specialized cleaning techniques for furniture and upholstery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Before & After Images -->
+        <div class="gallery-item reveal before-after">
+            <div class="gallery-image">
+                <img src="{% static 'images/kitchen4.jpg' %}" alt="Deep cleaned upholstery">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <h3>Kitchen Transformation</h3>
+                        <p>See the dramatic difference our deep cleaning makes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content reveal">
+            <h2 class="section-title">Ready to Transform Your Space?</h2>
+            <p class="cta-text">Experience the CleanFuture difference with our professional cleaning services. Book now for a cleaner, healthier environment.</p>
+            <div class="cta-buttons">
+                <a href="{% url 'booking' %}" class="cta-button">Book Now</a>
+                <a href="{% url 'contact' %}" class="cta-button" style="background: transparent; color: var(--white); border: 2px solid var(--white);">Contact Us</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-column">
+                <h4>CleanFuture</h4>
+                <p>Revolutionizing the cleaning industry with eco-friendly solutions and cutting-edge technology to provide exceptional service quality.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" class="social-icon" target="_blank">f</a>
+                    <a href="https://www.x.com" class="social-icon" target="_blank">t</a>
+                    <a href="https://www.linkedin.com" class="social-icon" target="_blank">ln</a>
+                    <a href="https://www.instagram.com" class="social-icon" target="_blank">ig</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'booking' %}">Book Now</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'services' %}#residential">Residential Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#commercial">Commercial Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#deep">Deep Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#eco">Eco-Friendly Cleaning</a></li>
+                    <li><a href="{% url 'services' %}#specialized">Specialized Services</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; {% now "Y" %} CleanFuture developed by _nh__. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/gallery.js' %}"></script>
+</body>
+</html>
